@@ -1,0 +1,195 @@
+@import "./global.scss";
+
+body {
+    background-color: red;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.hero {
+    background: radial-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.5)), url("/assets/workspace.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 100vh;
+    grid-column: span 3;
+    animation-name: offToOnScreenLeftToRight;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    animation-delay: 0.2s;
+    transform: translate3d(-100%, 0, 0);
+    opacity: 0;
+    clip-path: polygon(100% 100%, 0% 87%, 0% 0%, 100% 0%);
+    will-change: transform;
+}
+
+@keyframes growCircleView {
+    from {
+        clip-path: circle(0%);
+    }
+    to {
+        clip-path: circle(100%);
+    }
+}
+
+.hero__body {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    color: white;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: fadeIn 1s 2s ease-in-out forwards;
+}
+
+.hero__body > p {
+    text-shadow: 0px 1px 3px black;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.btn {
+    border-radius: 2px;
+    border-color: transparent;
+    text-align: center;
+    color: white;
+    background-color: rgb(0, 89, 255);
+}
+
+.btn__join {
+    border-radius: 5px;
+    border-color: transparent;
+    text-align: center;
+    color: black;
+    background-color: rgba(172, 255, 47, 0.7);
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
+    padding: 0.5em;
+    font-weight: bold;
+    border: 1px solid green;
+}
+
+.btn__join::before {
+    font-family: "FontAwesome";
+    content: "\f0d0";
+    color: black;
+    padding-right: 10px;
+}
+
+.btn__join:hover::before {
+    color: white;
+}
+
+.btn__join:active {
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3) inset;
+}
+
+.btn--big {
+    font-size: x-large;
+}
+
+.tools {
+    display: flex;
+    grid-column: span 3;
+    flex-flow: column nowrap;
+}
+
+.tools > h2 {
+    text-align: center;
+    font-size: 3em;
+    letter-spacing: 2PX;
+    font-style: normal;
+    /* color: rgb(30, 146, 255); */
+    /* font-family: "Courgette"; */
+}
+
+.toolGrid .tile {
+    padding: 1em;
+}
+
+.toolGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+    height: 100%;
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.2);
+    padding: 0 10px;
+    color: black;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+}
+
+.card--tool {
+    opacity: 0;
+    animation-name: comeIn;
+    animation-timing-function: ease-out;
+    animation-duration: 0.7s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+
+.card.visible {
+    animation-play-state: running;
+}
+
+@keyframes comeIn {
+    from {
+        transform: translate3d(0, 200px, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+/* .product__tile--rsep {
+    border-right: solid 1px gray;
+}
+
+.product__tile--lsep {
+    border-left: solid 1px gray;
+} */
+
+.card__icon {
+    margin: 0.2em;
+    font-size: 5em !important;
+}
+
+.card__description {
+    text-align: justify;
+    line-height: 2em;
+}
+
+.grid-table {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    list-style: none;
+    text-align: left;
+    font-size: large;
+    width: 50%;
+    justify-self: center;
+}
+
+.grid-table > li {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    justify-items: end;
+}
