@@ -6,6 +6,7 @@
 // https://ss64.com/nt/move.html
 // https://webpack.js.org/guides/production/#setup
 // https://webpack.js.org/configuration/devtool/#root
+// https://stackoverflow.com/questions/55901104/webpack-compile-is-very-slow
 
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
