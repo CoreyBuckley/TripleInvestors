@@ -23,4 +23,4 @@ document.addEventListener("DOMContentLoaded", function () {
     productTiles.forEach(tile => {
         observer.observe(tile);
     })
-})
+});

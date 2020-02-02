@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode development & SET NODE_ENV='development' & npm run organize",
-    "build:prod": "webpack --mode production & SET NODE_ENV='production'",
+    "build": "SET NODE_ENV='development' & webpack --mode development",
+    "build:prod": "SET NODE_ENV='production' & webpack --mode production",
     "organize": "(mkdir .\\dist\\js & mkdir .\\dist\\css & MOVE /Y .\\dist\\*.js .\\dist\\js & MOVE /Y .\\dist\\*.css .\\dist\\css) > nul 2>&1",
     "start": "npm run build && webpack-dev-server --mode development",
     "start:prod": "npm run build && webpack-dev-server --mode production",
-    "serve": "webpack-dev-server --mode development"
+    "serve": "webpack-dev-server --config webpack.dev.js"
   },
   "author": "",
   "license": "ISC",
@@ -31,7 +31,8 @@
     "sass-loader": "^8.0.2",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
+    "webpack-dev-server": "^3.10.1",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "intersection-observer": "^0.7.0"

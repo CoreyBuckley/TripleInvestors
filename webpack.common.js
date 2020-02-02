@@ -4,6 +4,8 @@
 // https://stackoverflow.com/questions/42813050/webpack-multiple-entry-points-sass-and-js
 // https://stackoverflow.com/questions/40565361/what-does-resolve-extensions-do-in-webpack
 // https://ss64.com/nt/move.html
+// https://webpack.js.org/guides/production/#setup
+// https://webpack.js.org/configuration/devtool/#root
 
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -30,43 +32,12 @@ module.exports = {
         rules: [
             {
                 test: /\.(j|t)sx?$/,
-                loader: "babel-loader",
+                loader: "babel-loader?cacheDirectory",
                 exclude: path.resolve(__dirname, "node_modules"),
             },
             {
                 test: /\.ts$/,
                 loader: "ts-loader"
-            },
-            {
-                test: /\.s(c|a)ss/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: process.env.NODE_ENV === 'development'
-                        }
-                    },
-                    {
-                        loader: "css-loader"
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            plugins: [
-                                require('autoprefixer')({
-                                    grid: true
-                                }),
-                                require('cssnano'),
-                            ]
-                        }
-                    },
-                    {
-                        loader: "sass-loader",
-                        options: {
-                            implementation: require("sass")
-                        }
-                    }
-                ]
             },
             {
                 test: /\.(ttf|eot|svg|png|jpg|gif|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -80,11 +51,10 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase: path.resolve(__dirname),
         compress: true,
-        port: "9000",
         inline: true,
-        hot: true
+        hot: true,
+        watchContentBase: true,
         // noInfo: true,
         // stats: 'minimal',
     }

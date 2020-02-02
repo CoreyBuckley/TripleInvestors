@@ -1,9 +1,5 @@
 @import "./global.scss";
 
-body {
-    background-color: red;
-}
-
 main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
