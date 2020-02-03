@@ -18,14 +18,15 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Raleway", 'M PLUS Rounded 1c', "sans-serif";
+    color: yellow;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
 }
 
 main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
 }
 
 .navbar a {
@@ -161,10 +162,10 @@ main {
 
 footer {
     color: white;
-    display: grid;
-    grid-gap: 0em 1em;
-    grid-template-rows: 2fr repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
+    // display: grid;
+    // grid-gap: 0em 1em;
+    // grid-template-rows: 2fr repeat(3, 1fr);
+    // grid-template-columns: repeat(3, 1fr);
     padding: 1em;
     margin-top: 5em;
     background-color: black;
@@ -182,7 +183,7 @@ footer > a:hover {
 .footer-bottom {
     margin-top: 1em;
     display: flex;
-    grid-area: 5 / 1 / 5 / span 3;
+    // grid-area: 5 / 1 / 5 / span 3;
     justify-content: space-between;
     border-top: solid gray 1px;
     padding-top: 10px;
@@ -190,7 +191,7 @@ footer > a:hover {
 
 .footer-bottom > .plugs {
     display: flex;
-    grid-area: 5 / 1 / 5 / span 3;
+    // grid-area: 5 / 1 / 5 / span 3;
     align-items: center;
 }
 

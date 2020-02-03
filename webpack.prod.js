@@ -6,10 +6,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = merge(common, {
     mode: "production",
     devtool: "inline-source-map",
-    devServer: {
-        contentBase: path.resolve(__dirname, "./src/views/"),
-        port: "9300",
-    },
     module: {
         rules: [
             {
@@ -46,5 +42,13 @@ module.exports = merge(common, {
                 ]
             }
         ]
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, "./src/views/"),
+        // port: "9300", Using the webpack-dev-middleware with express, the express listen port will override this
+        inline: false,
+        hot: false,
+        liveReload: false,
+        watchContentBase: false
     }
 });

@@ -8,18 +8,19 @@ tries to adopt a modern looking interface.
 # Todo
 
 
-- [ ] Figure out if I want to add a server component
+- [X] Figure out if I want to add a server component. *Yes*
 
-### **Expanding the Application:** General UI / UX
+### **Expanding the Application:** General UI / UX + Build Systems
 
 - [ ] Make landing page mobile compatiable
 - [ ] Add short overview of company to the hero banner on landing page?
 - [ ] Add more sections, (Accomplishments, History, Customers, Growth/Future, Products, Pricing)
 - [ ] Add diagonals that bleed into the next section to entice user to scroll
 - [ ] Maybe change navbar look, less boring.
-- [ ] Refactor CSS into SCSS, utilizing modules.
-- [ ] Figure out a nice workflow for using SCSS (preferably with SCSS modules) but not using webpack/bundler since I *probably* won't need it
+- [X] Refactor CSS into SCSS, utilizing modules.
+- [X] Figure out a nice workflow for using SCSS (preferably with SCSS modules) but not using webpack/bundler since I *probably* won't need it. *Am using webpack plugins and SCSS modules*
 - [ ] Add parallax
+- [ ] Need an HTML templating engine so I can have layouts or partials, etc. Mustache maybe?
 
 ### **Expanding the Application:** Server-side
 
@@ -27,7 +28,7 @@ tries to adopt a modern looking interface.
 - [ ] Restrict certain pages to only users with certain roles
 - [ ] Host a relational database of mock financial data (pure SQL)
 - [ ] CRUD operations
-- [ ] Server in: PHP, NodeJS+Express, C#+.NET Core? The server would mostly just be for API calls, it wouldn't be returning views ala MVC.
+- [X] Server in: PHP, NodeJS+Express, C#+.NET Core? The server would mostly just be for API calls, it wouldn't be returning views ala MVC. *Server is in Node.js+Express*
 
 ### **Expanding the Application:** Admin Dashboard
 

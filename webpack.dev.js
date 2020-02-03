@@ -5,7 +5,30 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = merge(common, {
     mode: "development",
-    devtool: "cheap-eval-source-map",
+    module: {
+        rules: [
+            {
+                test: /\.s(c|a)ss/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'development'
+                        }
+                    },
+                    {
+                        loader: "css-loader"
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            implementation: require("sass")
+                        }
+                    }
+                ]
+            }
+        ]
+    },
     devServer: {
         // webpack-dev-server will create the project in memory (don't need a dist directory).
         // The contentBase pathes determine what webpack-dev-server should include as a potential resource
@@ -36,30 +59,10 @@ module.exports = merge(common, {
         //    |__+ index.html
         //    |__+ login.html
         contentBase: [path.resolve(__dirname, "./src/views/"), path.resolve(__dirname, "./src")],
-        port: "9000",
-    },
-    module: {
-        rules: [
-            {
-                test: /\.s(c|a)ss/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: process.env.NODE_ENV === 'development'
-                        }
-                    },
-                    {
-                        loader: "css-loader"
-                    },
-                    {
-                        loader: "sass-loader",
-                        options: {
-                            implementation: require("sass")
-                        }
-                    }
-                ]
-            }
-        ]
+        // port: "9000", Using the webpack-dev-middleware with express, the express listen port will override this
+        // inline: true,
+        // hot: true,
+        // liveReload: true,
+        // watchContentBase: true
     }
 });
