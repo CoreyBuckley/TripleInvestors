@@ -10,23 +10,22 @@
 // https://github.com/webpack-contrib/webpack-hot-middleware
 // https://stackoverflow.com/questions/35233291/running-a-node-express-server-using-webpack-dev-server
 // https://webpack.js.org/guides/output-management/#cleaning-up-the-dist-folder
+// https://www.reddit.com/r/javascript/comments/4ll5f1/why_is_my_minified_webpack_bundle_so_huge/
+// https://github.com/survivejs/webpack-merge#mergemultipleconfiguration-configuration
 
 const path = require("path");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
         "home": [
             path.resolve(__dirname, "src/scripts/home.js"),
-            path.resolve(__dirname, "src/styles/home.scss"),
-            hotMiddlewareScript
+            path.resolve(__dirname, "src/styles/home.scss")
         ],
         "login": [
-            path.resolve(__dirname, "src/styles/login.scss"),
-            hotMiddlewareScript
+            path.resolve(__dirname, "src/styles/login.scss")
         ]
     },
     resolve: {
@@ -60,9 +59,12 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "[name].css"
         }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '\'' + process.env.NODE_ENV + '\'',
+            },
+        })
     ],
     devServer: {
         compress: true

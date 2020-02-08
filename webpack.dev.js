@@ -1,10 +1,23 @@
+// https://github.com/survivejs/webpack-merge#mergemultipleconfiguration-configuration
+// tl;dr merge.multiple merges dictionaries when the key is the same (so we can add the HMR script for each entry point)
+
 const merge = require("webpack-merge");
 const common = require("./webpack.common");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
+const webpack = require("webpack");
 
-module.exports = merge(common, {
+module.exports = merge.multiple(common, {
     mode: "development",
+    entry: {
+        "home": [
+            hotMiddlewareScript
+        ],
+        "login": [
+            hotMiddlewareScript
+        ]
+    },
     module: {
         rules: [
             {
@@ -64,5 +77,8 @@ module.exports = merge(common, {
         // hot: true,
         // liveReload: true,
         // watchContentBase: true
-    }
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 });

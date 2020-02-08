@@ -2,10 +2,11 @@ const merge = require("webpack-merge");
 const common = require("./webpack.common");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
 
 module.exports = merge(common, {
     mode: "production",
-    devtool: "inline-source-map",
+    devtool: "inline-source-map", // Comment this out if you wanna reduce bundle size
     module: {
         rules: [
             {
@@ -45,10 +46,15 @@ module.exports = merge(common, {
     },
     devServer: {
         contentBase: path.resolve(__dirname, "./src/views/"),
-        // port: "9300", Using the webpack-dev-middleware with express, the express listen port will override this
         inline: false,
         hot: false,
         liveReload: false,
         watchContentBase: false
+    },
+    plugins: [
+        new webpack.optimize.OccurrenceOrderPlugin()
+    ],
+    optimization: {
+        minimize: true
     }
 });
