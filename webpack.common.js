@@ -8,10 +8,12 @@
 // https://webpack.js.org/configuration/devtool/#root
 // https://stackoverflow.com/questions/55901104/webpack-compile-is-very-slow
 // https://github.com/webpack-contrib/webpack-hot-middleware
+// https://github.com/webpack-contrib/webpack-hot-middleware/blob/master/example/server.js
 // https://stackoverflow.com/questions/35233291/running-a-node-express-server-using-webpack-dev-server
 // https://webpack.js.org/guides/output-management/#cleaning-up-the-dist-folder
 // https://www.reddit.com/r/javascript/comments/4ll5f1/why_is_my_minified_webpack_bundle_so_huge/
 // https://github.com/survivejs/webpack-merge#mergemultipleconfiguration-configuration
+// Node env not being properly set from npm script: https://stackoverflow.com/a/30272349
 
 const path = require("path");
 const webpack = require("webpack");

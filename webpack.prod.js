@@ -1,8 +1,8 @@
+const webpack = require("webpack");
 const merge = require("webpack-merge");
 const common = require("./webpack.common");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const webpack = require("webpack");
 
 module.exports = merge(common, {
     mode: "production",
@@ -15,7 +15,7 @@ module.exports = merge(common, {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            hmr: process.env.NODE_ENV === 'development'
+                            hmr: false
                         }
                     },
                     {

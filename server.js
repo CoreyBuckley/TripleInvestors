@@ -5,30 +5,22 @@ const webpack = require('webpack');
 const commonConfig = require("./webpack.common");
 const serveIndex = require("serve-index");
 const defaultPort = 3000;
-// const webpackMerge = require('webpack-merge');
-// const x = require('./webpack.common');
 // const y = require('./webpack.dev');
 // const z = require('./webpack.prod');
 // console.log("WEBPACK.DEV");
 // console.log(y);
 // console.log("WEBPACK.PROD");
 // console.log(z);
-// console.log(x);
-// console.log("*******************");
-// console.log(y); // the webpack.dev config has already been merged with the common? I guess because the config file has the merge call already in there?
-// console.log("-------------------");
-// const devConfig = webpackMerge(x, y);
-// const prodConfig = webpackMerge(require('./webpack.common'), require('./webpack.prod'));
-// console.log(devConfig);
-const compiler = process.env.NODE_ENV == 'development' ? webpack(require('./webpack.dev')) : webpack(require('./webpack.prod')); //move your `devServer` config from `webpack.config.js`
+// the webpack.dev config has already been merged with the common since the config file has the merge call already in there
+const compiler = process.env.NODE_ENV == 'development' ? webpack(require('./webpack.dev')) : webpack(require('./webpack.prod'));
 
 // https://stackoverflow.com/questions/6294186/express-js-any-way-to-display-a-file-dir-listing
 app.use("/", express.static(path.resolve(__dirname, "src")));
 app.use("/", serveIndex(path.resolve(__dirname, "src")));
 
 app.use(require('webpack-dev-middleware')(compiler, {
-    // serverSideRender: true,
-    publicPath: commonConfig.output.publicPath
+    serverSideRender: true,
+    publicPath: commonConfig.output.publicPath,
 }));
 app.use(require("webpack-hot-middleware")(compiler, {
     log: console.log,
@@ -48,5 +40,5 @@ app.get("/download", function (req, res, next) {
 // })
 
 app.listen(process.env.PORT || defaultPort, "localhost", 4, () => {
-    console.log(`Server started on ${process.env.PORT || defaultPort}`);
+    console.log(`${process.env.NODE_ENV == 'development' ? 'Development' : 'Production'} server running on port ${process.env.PORT || defaultPort}`);
 });
