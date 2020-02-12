@@ -1,7 +1,6 @@
 // Use intersection observer API, https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 
-import { IntersectPoly } from "./polyfills";
-IntersectPoly();
+import "./polyfills/intersection-observer";
 
 document.addEventListener("DOMContentLoaded", function () {
     let productTiles = document.querySelectorAll(".tile");

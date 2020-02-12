@@ -1,17 +1,17 @@
 @import "./global.scss";
 
 main {
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .hero {
-    background: radial-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.5)), url("/assets/workspace.jpg");
+    background: radial-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.5)), url("../assets/workspace.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
     height: 100vh;
-    // grid-column: span 3;
+    grid-column: span 3;
     animation-name: offToOnScreenLeftToRight;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
@@ -99,7 +99,7 @@ main {
 
 .tools {
     display: flex;
-    // grid-column: span 3;
+    grid-column: span 3;
     flex-flow: column nowrap;
 }
 
@@ -117,8 +117,8 @@ main {
 }
 
 .toolGrid {
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .card {
@@ -175,8 +175,8 @@ main {
 }
 
 .grid-table {
-    // display: grid;
-    // grid-template-rows: repeat(3, 1fr);
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
     list-style: none;
     text-align: left;
     font-size: large;
@@ -185,7 +185,7 @@ main {
 }
 
 .grid-table > li {
-    // display: grid;
-    // grid-template-columns: 3fr 1fr;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
     justify-items: end;
 }

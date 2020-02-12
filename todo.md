@@ -29,6 +29,7 @@ tries to adopt a modern looking interface.
 - [ ] Host a relational database of mock financial data (pure SQL)
 - [ ] CRUD operations
 - [X] Server in: PHP, NodeJS+Express, C#+.NET Core? The server would mostly just be for API calls, it wouldn't be returning views ala MVC. *Server is in Node.js+Express*
+- [ ] Use HTTP/2. (Can use [spdy](https://www.npmjs.com/package/spdy) instead of http.createServer or [relevant SO post](https://stackoverflow.com/questions/28639995/node-js-server-and-http-2-2-0-with-express-js))
 
 ### **Expanding the Application:** Admin Dashboard
 

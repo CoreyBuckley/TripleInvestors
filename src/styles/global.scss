@@ -25,8 +25,8 @@ body {
 }
 
 main {
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .navbar a {
@@ -52,8 +52,8 @@ main {
 
 .navbar {
     display: flex;
-    // background-color: var(--light-theme-navbar-bg);
-    background-color: purple;
+    background-color: var(--light-theme-navbar-bg);
+    // background-color: purple;
     color: black;
     font-size: 18px;
     height: 2em;
@@ -163,10 +163,10 @@ main {
 
 footer {
     color: white;
-    // display: grid;
-    // grid-gap: 0em 1em;
-    // grid-template-rows: 2fr repeat(3, 1fr);
-    // grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-gap: 0em 1em;
+    grid-template-rows: 2fr repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: 1em;
     margin-top: 5em;
     background-color: black;
@@ -184,7 +184,7 @@ footer > a:hover {
 .footer-bottom {
     margin-top: 1em;
     display: flex;
-    // grid-area: 5 / 1 / 5 / span 3;
+    grid-area: 5 / 1 / 5 / span 3;
     justify-content: space-between;
     border-top: solid gray 1px;
     padding-top: 10px;
@@ -192,7 +192,7 @@ footer > a:hover {
 
 .footer-bottom > .plugs {
     display: flex;
-    // grid-area: 5 / 1 / 5 / span 3;
+    grid-area: 5 / 1 / 5 / span 3;
     align-items: center;
 }
 

@@ -20,7 +20,7 @@ app.use("/", serveIndex(path.resolve(__dirname, "src")));
 
 app.use(require('webpack-dev-middleware')(compiler, {
     serverSideRender: true,
-    publicPath: commonConfig.output.publicPath,
+    publicPath: commonConfig.output.publicPath
 }));
 app.use(require("webpack-hot-middleware")(compiler, {
     log: console.log,

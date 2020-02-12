@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = merge(common, {
     mode: "production",
-    devtool: "inline-source-map", // Comment this out if you wanna reduce bundle size
+    //devtool: "inline-source-map", // Comment this out if you wanna reduce bundle size
     module: {
         rules: [
             {

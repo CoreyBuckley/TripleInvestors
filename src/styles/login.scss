@@ -1,18 +1,18 @@
 @import "./global.scss";
 
 .card--login {
-    // grid-column-start: 2;
+    grid-column-start: 2;
     place-self: center;
 }
 
 .card--login form {
-    // display: grid;
-    // grid-template-columns: 1fr 1fr;
-    // grid-template-rows: repeat(2, 1fr);
-    // justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
 }
 
 .card--login form button {
     place-self: center;
-    // grid-column: span 2;
+    grid-column: span 2;
 }
