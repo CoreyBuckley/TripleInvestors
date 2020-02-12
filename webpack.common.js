@@ -24,7 +24,8 @@ module.exports = {
     entry: {
         "home": [
             path.resolve(__dirname, "src/scripts/home.js"),
-            path.resolve(__dirname, "src/styles/home.scss")
+            path.resolve(__dirname, "src/styles/home.scss"),
+            path.resolve(__dirname, "src/views/index.html")
         ],
         "login": [
             path.resolve(__dirname, "src/styles/login.scss")
@@ -51,7 +52,7 @@ module.exports = {
                 loader: "ts-loader"
             },
             {
-                test: /\.(ttf|eot|svg|png|jpg|gif|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(ttf|eot|svg|png|jpg|gif|ico|html)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader'
             }
         ]
