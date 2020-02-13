@@ -14,6 +14,7 @@
 // https://www.reddit.com/r/javascript/comments/4ll5f1/why_is_my_minified_webpack_bundle_so_huge/
 // https://github.com/survivejs/webpack-merge#mergemultipleconfiguration-configuration
 // Node env not being properly set from npm script: https://stackoverflow.com/a/30272349
+// Using html as entry point via file-loader https://github.com/webpack/webpack/issues/536
 
 const path = require("path");
 const webpack = require("webpack");
@@ -25,7 +26,7 @@ module.exports = {
         "home": [
             path.resolve(__dirname, "src/scripts/home.js"),
             path.resolve(__dirname, "src/styles/home.scss"),
-            path.resolve(__dirname, "src/views/index.html")
+            path.resolve(__dirname, "src/views/index.ejs")
         ],
         "login": [
             path.resolve(__dirname, "src/styles/login.scss")
@@ -52,7 +53,7 @@ module.exports = {
                 loader: "ts-loader"
             },
             {
-                test: /\.(ttf|eot|svg|png|jpg|gif|ico|html)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(ttf|eot|svg|png|jpg|gif|ico|html|ejs)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader'
             }
         ]
