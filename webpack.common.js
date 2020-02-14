@@ -72,7 +72,6 @@ module.exports = {
     ],
     devServer: {
         compress: true
-        // noInfo: true,
-        // stats: 'minimal',
-    }
+    },
+    cache: true
 }

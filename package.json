@@ -8,8 +8,9 @@
     "build:prod": "SET NODE_ENV='production' & webpack --mode production",
     "organize": "(mkdir .\\dist\\js & mkdir .\\dist\\css & MOVE /Y .\\dist\\*.js .\\dist\\js & MOVE /Y .\\dist\\*.css .\\dist\\css) > nul 2>&1",
     "serve": "webpack-dev-server --config webpack.dev.js",
-    "node": "SET NODE_ENV=development&&nodemon server.js",
-    "node:prod": "SET NODE_ENV=production&&nodemon server.js"
+    "startAndWatchServer": "nodemon ./server.js",
+    "node": "SET NODE_ENV=development&&npm run startAndWatchServer",
+    "node:prod": "SET NODE_ENV=production&&node server.js"
   },
   "author": "",
   "license": "ISC",

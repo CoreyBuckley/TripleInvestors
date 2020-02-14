@@ -5,10 +5,20 @@ technical competency. Therefore, any sort of server-side extension to this app i
 for my own benefit. While I do want the site to make sense, it doesn't take itself serious and
 tries to adopt a modern looking interface.
 
+# Stack so far
+
+- NodeJS + Express
+- SCSS/CSS
+- JS
+- HTML + Preprocessor EJS
+
 # Todo
 
+- [X] Figure out if I want to add a server component. **Yes**
 
-- [X] Figure out if I want to add a server component. *Yes*
+### **Bugs**
+
+- [ ] When running the server with nodemon and triggering the server reload (e.g. by changing the data returned to one of the routes), it takes about a minute for the browser to reload.
 
 ### **Expanding the Application:** General UI / UX + Build Systems
 
@@ -18,9 +28,9 @@ tries to adopt a modern looking interface.
 - [ ] Add diagonals that bleed into the next section to entice user to scroll
 - [ ] Maybe change navbar look, less boring.
 - [X] Refactor CSS into SCSS, utilizing modules.
-- [X] Figure out a nice workflow for using SCSS (preferably with SCSS modules) but not using webpack/bundler since I *probably* won't need it. *Am using webpack plugins and SCSS modules*
+- [X] Figure out a nice workflow for using SCSS (preferably with SCSS modules) but not using webpack/bundler since I *probably* won't need it. -**Am using webpack plugins and SCSS modules**-
 - [ ] Add parallax
-- [ ] Need an HTML templating engine so I can have layouts or partials, etc. Mustache maybe?
+- [X] Need an HTML templating engine so I can have layouts or partials, etc. Mustache maybe? -**Am using EJS**-
 
 ### **Expanding the Application:** Server-side
 
