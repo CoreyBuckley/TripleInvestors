@@ -1,5 +1,10 @@
 @import "./global.scss";
 
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)
+}
+
 .card--login {
     grid-column-start: 2;
     place-self: center;

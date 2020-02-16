@@ -8,8 +8,7 @@
     "build:prod": "SET NODE_ENV='production' & webpack --mode production",
     "organize": "(mkdir .\\dist\\js & mkdir .\\dist\\css & MOVE /Y .\\dist\\*.js .\\dist\\js & MOVE /Y .\\dist\\*.css .\\dist\\css) > nul 2>&1",
     "serve": "webpack-dev-server --config webpack.dev.js",
-    "startAndWatchServer": "nodemon ./server.js",
-    "node": "SET NODE_ENV=development&&npm run startAndWatchServer",
+    "node": "SET NODE_ENV=development&&nodemon server.js",
     "node:prod": "SET NODE_ENV=production&&node server.js"
   },
   "author": "",
@@ -30,6 +29,7 @@
     "express": "^4.17.1",
     "file-loader": "^5.0.2",
     "mini-css-extract-plugin": "^0.9.0",
+    "morgan": "^1.9.1",
     "postcss-loader": "^3.0.0",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",

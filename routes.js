@@ -11,26 +11,31 @@ router.get("/", function (req, res, next) {
     // res.sendFile(path.resolve("./src/views/index.html"));
     res.render(path.resolve("./src/views/index"), {
         data: [
-            "adam",
-            "suzy",
-            "tommy",
-            "becky",
-            "timmy",
-            "mary",
-            "billy",
-            "jill",
-            "tom",
-            "berta",
-            "amanda",
-            "tony",
-            "jack",
-            "tabitha"
+            // "adam",
+            // "suzy",
+            // "tommy",
+            // "becky",
+            // "timmy",
+            // "mary",
+            // "billy",
+            // "jill",
+            // "tom",
+            // "berta",
+            // "amanda",
+            // "tony",
+            // "jack",
+            // "tabitha"
         ]
     });
 })
-router.get("/login", function (req, res, next) {
-    res.sendFile(path.resolve("./src/views/login.html"));
-    // res.render(path.resolve("./src/views/login"), {data: {}});
-});
+
+router.route("/login")
+    .get(function (req, res, next) {
+        res.sendFile(path.resolve("./src/views/login.html"));
+        // res.render(path.resolve("./src/views/login"), {data: {}});
+    })
+    .post(function (req, res, next) {
+
+    });
 
 module.exports = router;

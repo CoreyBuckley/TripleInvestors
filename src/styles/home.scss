@@ -3,15 +3,17 @@
 main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "hero hero hero"
+                         "tools tools tools"
 }
 
 .hero {
+    grid-area: hero;
     background: radial-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.5)), url("/assets/workspace.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
     height: 100vh;
-    grid-column: span 3;
     animation-name: offToOnScreenLeftToRight;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
@@ -98,9 +100,7 @@ main {
 }
 
 .tools {
-    display: flex;
-    grid-column: span 3;
-    flex-flow: column nowrap;
+    grid-area: tools;
 }
 
 .tools > h2 {
@@ -112,14 +112,25 @@ main {
     /* font-family: "Courgette"; */
 }
 
+.toolGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    // grid-template: "tool1 tool2 tool3";
+}
+
 .toolGrid .tile {
     padding: 1em;
 }
 
-.toolGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
+// .tile:nth-child(1) {
+//     grid-area: tool1;
+// }
+// .tile:nth-child(2) {
+//     grid-area: tool2;
+// }
+// .tile:nth-child(3) {
+//     grid-area: tool3;
+// }
 
 .card {
     height: 100%;
@@ -187,5 +198,8 @@ main {
 .grid-table > li {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    justify-items: end;
+}
+
+.grid-table > li > * {
+    justify-self: end;
 }
