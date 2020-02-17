@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const path = require("path");
 const express = require("express");
 const app = express();
@@ -25,7 +27,12 @@ app.use(require("webpack-hot-middleware")(compiler, {
     heartbeat: 10 * 1000,
     reload: true
 }));
+// For Content-Type: application/json
 app.use(express.json());
+// For Content-Type: application/x-www-form-urlencoded (form data POST)
+app.use(express.urlencoded({
+    extended: true
+}))
 app.use(morgan(isDev ? "dev" : "combined", {}));
 app.use(routes);
 

@@ -29,6 +29,11 @@ module.exports = {
             path.resolve(__dirname, "src/views/index.ejs")
         ],
         "login": [
+            path.resolve(__dirname, "src/views/login.ejs"),
+            path.resolve(__dirname, "src/styles/login.scss")
+        ],
+        "success": [
+            path.resolve(__dirname, "src/views/success.ejs"),
             path.resolve(__dirname, "src/styles/login.scss")
         ]
     },

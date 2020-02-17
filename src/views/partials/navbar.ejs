@@ -1,5 +1,10 @@
 <header>
-    <nav class="navbar navbar--animate">
+    <!-- https://stackoverflow.com/questions/7289916/how-would-you-check-for-undefined-property-in-ejs-for-node-js -->
+    <% if (locals.data && data.animate) { %>
+        <nav class="navbar navbar--animate">
+    <% } else { %>
+        <nav class="navbar">
+    <% } %>
         <div class="navbar__logo">
             <a href="/"><i class="fa fa-anchor" aria-hidden="true"></i> Triple Investors</a>
         </div>
