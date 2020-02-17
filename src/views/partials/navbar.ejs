@@ -19,7 +19,11 @@
                 <a href="#"><i class="fa fa-briefcase" aria-hidden="true"></i> Opportunities</a>
             </li>
             <li>
-                <a href="login" class="loginLink"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                <% if (!locals.data || !locals.data.user) { %>
+                    <a href="login" class="loginLink"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                <% } else if (locals.data.user) { %>
+                    <p>Logged in as: <%= locals.data.user.username %></p>
+                <% } %>
             </li>
         </ul>
     </nav>

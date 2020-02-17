@@ -34,7 +34,11 @@ module.exports = {
         ],
         "success": [
             path.resolve(__dirname, "src/views/success.ejs"),
-            path.resolve(__dirname, "src/styles/login.scss")
+            path.resolve(__dirname, "src/styles/global.scss")
+        ],
+        "confidential": [
+            path.resolve(__dirname, "src/views/confidential.ejs"),
+            path.resolve(__dirname, "src/styles/global.scss")
         ]
     },
     resolve: {

@@ -35,6 +35,8 @@ tries to adopt a modern looking interface.
 ### **Expanding the Application:** Server-side
 
 - [ ] Add login / user authentication (and thus add a login page)
+    - [ ] Need pages that require authentication
+    - [ ] How to persist user session? Server sends a cookie back for a specific user (upon successful login). Client sends this cookie with every request. When server/express gets user cookie on the req, how to translate this to user info I can query the db with? So then you'd be able to get the username and then add that data to the templating engine so you can have the returned pages be customized for that user.
 - [ ] Restrict certain pages to only users with certain roles
 - [ ] Host a relational database of mock financial data (pure SQL)
 - [ ] CRUD operations

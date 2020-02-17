@@ -8,6 +8,7 @@ const morgan = require("morgan");
 const webpack = require('webpack');
 const commonConfig = require("./webpack.common");
 const serveIndex = require("serve-index");
+const cookieParser = require("cookie-parser")
 const defaultPort = 3000;
 const isDev = process.env.NODE_ENV == 'development';
 // the webpack.dev config has already been merged with the common since the config file has the merge call already in there
@@ -33,6 +34,7 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }))
+app.use(cookieParser());
 app.use(morgan(isDev ? "dev" : "combined", {}));
 app.use(routes);
 
