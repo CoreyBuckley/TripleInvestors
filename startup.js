@@ -3,7 +3,7 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const app = express();
-const routes = require("./routes");
+const routes = require("./server/routes");
 const morgan = require("morgan");
 const webpack = require('webpack');
 const commonConfig = require("./webpack.common");
