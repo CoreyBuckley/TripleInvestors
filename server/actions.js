@@ -9,6 +9,8 @@ const sql = mysql.createPool({
   database : process.env.DB_NAME
 });
 
+const bcrypt = require("bcrypt");
+
 const state = require("./state");
 
 module.exports = {
@@ -58,27 +60,30 @@ module.exports = {
                             res.send("Failed");
                             throw error;
                         }
-                        if (results[0].password == req.body.password) {
-                            // res.cookie("username", "corey", { expires: new Date(Date.now() + 1000*60*5)});
-                            let token = crypto.createHash('sha256')
-                                              .update(req.ip + process.env.SESSION_SECRET + req.body.email + req.hostname + req.headers.date)
-                                              .digest('hex');
-                            // 1 minute
-                            let expiresIn = 1000*60*1;
-                            res.cookie("session", token, {
-                                expires: new Date(Date.now() + expiresIn)
-                            });
-                            state.loggedInUsers[token] = req.body.email;
-                            // Set thread for deletion of logged in user from server state when cookie expires.
-                            // Is this a use case for redis?
-                            setTimeout(() => {
-                                delete state.loggedInUsers[token];
-                            }, expiresIn)
-                            return res.redirect(301, "/success");
-                        }
-                        else {
-                            return res.end("Failed");
-                        }
+                        // https://www.npmjs.com/package/bcrypt#with-promises
+                        bcrypt.compare(req.body.password, results[0].password).then(isMatch => {
+                            if (isMatch) {
+                                // res.cookie("username", "corey", { expires: new Date(Date.now() + 1000*60*5)});
+                                let token = crypto.createHash('sha256')
+                                            .update(req.ip + process.env.SESSION_SECRET + req.body.email + req.hostname + req.headers.date)
+                                            .digest('hex');
+                                // 1 minute
+                                let expiresIn = 1000*60*1;
+                                res.cookie("session", token, {
+                                    expires: new Date(Date.now() + expiresIn)
+                                });
+                                state.loggedInUsers[token] = req.body.email;
+                                // Set thread for deletion of logged in user from server state when cookie expires.
+                                // Is this a use case for redis?
+                                setTimeout(() => {
+                                    delete state.loggedInUsers[token];
+                                }, expiresIn);
+                                return res.redirect(301, "/success");
+                            }
+                            else {
+                                return res.end("Failed");
+                            }
+                        });
                     });
                 }
             }
