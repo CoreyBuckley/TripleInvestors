@@ -14,7 +14,7 @@ const routes = {
         },
         {
             method: "POST",
-            actions: actions.post.loginPage
+            actions: actions.post.login
         }
     ],
     "download": [
@@ -41,6 +41,12 @@ const routes = {
             method: "GET",
             actions: actions.get.successPage,
             requiresAuthentication: true
+        }
+    ],
+    "signup": [
+        {
+            method: "POST",
+            actions: actions.post.signup
         }
     ],
     "*": [
@@ -81,6 +87,7 @@ router.use(
                 next()
             }
             else {
+                // If page for unauthorized access, would set http status to 401 unauthorized.
                 return res.redirect("/login");
             }
         }

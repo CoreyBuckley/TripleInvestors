@@ -52,7 +52,7 @@ module.exports = {
         ]
     },
     post: {
-        loginPage: [
+        login: [
             function (req, res, next) {
                 if (req.body.email) {
                     sql.query("SELECT password FROM users WHERE email = ?", [req.body.email], function (error, results, fields) {
@@ -85,6 +85,39 @@ module.exports = {
                             }
                         });
                     });
+                }
+            }
+        ],
+        signup: [
+            function (req, res, next) {
+                if (req.body.email && req.body.password) {
+                    bcrypt.hash(req.body.password, 10).then(hashedPass => {
+                        sql.query(`
+                            SELECT 1 FROM users WHERE email=?;
+                        `, [req.body.email], function(error, results, fields) {
+                            if (error) {
+                                throw error;
+                            }
+                            if (results.length > 0) {
+                                return res.end("Already registered!");
+                            }
+                            else {
+                                sql.query("INSERT INTO users (email, password) VALUES (?, ?);", [
+                                    req.body.email,
+                                    hashedPass
+                                ], function (error, results, fields) {
+                                    if (error) {
+                                        throw error;
+                                    }
+                                    return res.end("Successfully signed up!");
+                                })
+                            }
+                        })
+                    });
+                }
+                else {
+                    // Bad request
+                    res.status(400)
                 }
             }
         ]
